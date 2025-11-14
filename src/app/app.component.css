@@ -1,0 +1,10 @@
+.noDiscountedProduct {
+    color: red;
+}
+.discountedProduct{
+    color: green;
+
+}
+.quantity {
+    background-color: blue;
+}
