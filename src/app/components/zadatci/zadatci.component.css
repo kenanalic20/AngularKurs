@@ -1,0 +1,21 @@
+.coloredDiv {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+.calc {
+    width: 50%;
+    height: 500px;
+    border: 1px solid black;
+}
+.calc > h1{
+    text-align: center;
+}
+.numInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.numInput > input {
+    height: 50px;
+}

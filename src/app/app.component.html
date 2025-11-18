@@ -1,13 +1,9 @@
-<!-- Ucitavanje slika -->
-<!-- <img width="200" height="100" [src]="imagePath" alt=""> -->
-<!-- Disabled button -->
-<!-- <button [disabled]="isDisabled" type="button">Click me</button> -->
-
 <table>
   <thead>
     <th>Slika</th>
     <th>Kod</th>
     <th>Naziv</th>
+    <th>Datum</th>
     <th>Cjena</th>
     <th>Kolicina</th>
     <th>Popust</th>
@@ -17,22 +13,41 @@
     <tr *ngFor="let product of products">
       <td><img width="80" height="80" [src]="product.image" alt=""></td>
       <td>{{product.code}}</td>
-      <td [style.color]="nameColor">{{product.name}}</td>
-      <!-- <td [ngClass]="{'noDiscountedProduct' : product.discount == false, 'discountedProduct' : product.discount == true}">{{product.price}}</td> -->
-      <td [ngClass]="product.discount?'discountedProduct':'noDiscountedProduct'">{{product.price}}</td>
+      <!-- <td [style.color]="nameColor">{{product.name | titlecase }}</td> -->
+      <td [style.color]="nameColor">{{product.name | slice: 0:5 }}</td>
+      <td [style.color]="nameColor">{{today | date:'dd/MM/yyyy'}}</td>
+
+      <!-- <td [ngClass]="product.discount?'discountedProduct':'noDiscountedProduct'">{{product.price | number:'1.2-2' }}</td> -->
+      <td [ngClass]="product.discount?'discountedProduct':'noDiscountedProduct'">{{product.price | currency:'EUR' }}</td>
+
       <td [ngClass]="{'quantity':product.quantity >= 10}">{{product.quantity}}</td>
-      <!-- Moze i sa ngifovima za svaki od ovih opcija -->
       <td>
         <button [disabled]="!product.discount" (click)="disableButton(product)">
           {{product.discount ? "Da" : "Ne"}}
         </button>
       </td>
 
-      <!-- <td [ngStyle]="{'font-size' : product.discount? '12px' : '20px'}" >{{product.description}}</td> -->
-      <td [ngStyle]="{
-        'font-size' : product.description.length >= 10? '12px' : product.description.length < 10 ? '20px' : '12px',
-         'font-weight' : product.description.product.description.length < 10 ? 'bold':'normal' }" >{{product.description}}</td>
+      <td
+      [ngStyle]="{
+        'font-size': product?.description?.length >= 10 ? '12px' : '20px',
+        'font-weight': product?.description?.length < 10 ? 'bold' : 'normal'
+      }"
+    >
+      {{ product?.description }}
+    </td>
+    
       
     </tr>
   </tbody>
 </table>
+<!-- <input type="text" (input)="onInput($event)"> -->
+<input #search type="text" (input)="onInput(search.value)">
+<!-- <input type="text" (keyup)="onKeyUp($event)" > -->
+<input type="text" (keyup.enter)="onKeyUp()" >
+<input type="text" (mouseenter)="onMouseEnter($event)" >
+<button type="button" (dblclick)="onDblClick($event)" >Double click</button>
+<button type="button" (contextmenu)="onRightClick($event)" >Right click</button>
+
+<p>{{productName | uppercase}}</p>
+
+<app-zadatci></app-zadatci>
