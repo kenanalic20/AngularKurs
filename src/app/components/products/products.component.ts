@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
-import { Route } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -30,4 +30,8 @@ export class ProductsComponent {
       quantity: 200
     }
   ]
+  route = inject(Router);
+  onClick() {
+    this.route.navigate(['home'])
+  }
 }
