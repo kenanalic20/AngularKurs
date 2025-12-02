@@ -1,17 +1,17 @@
-import { NgFor } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-product-details',
   standalone: true,
-  imports: [NgFor],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  imports: [],
+  templateUrl: './product-details.component.html',
+  styleUrl: './product-details.component.css'
 })
-export class ProductsComponent {
-  // router = inject(Router);//novi nacin za injectanje servisa
-  constructor(private router:Router) {}
+export class ProductDetailsComponent {
+  constructor(private router:ActivatedRoute){}
+  productId = 0;
+  product : any = {}
   products =[
     {
       id:1,
@@ -35,9 +35,17 @@ export class ProductsComponent {
       quantity: 200
     }
   ]
-  
-
-  onClick(id:number) {
-    this.router.navigate([`product-details/${id}`])
+  ngOnInit() {
+    this.productId =Number(this.router.snapshot.paramMap.get("id")?.toString());
+    this.product = this.products.find((el)=>el.id == this.productId)
   }
+
+  // getProduct() {
+  //   // this.products.forEach(el => {
+  //   //   if (el.id === this.productId) {
+  //   //     this.product = el;
+  //   //   }
+  //   // });
+  // }
+  
 }
