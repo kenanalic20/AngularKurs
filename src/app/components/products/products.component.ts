@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -11,31 +12,12 @@ import { Route, Router } from '@angular/router';
 })
 export class ProductsComponent {
   // router = inject(Router);//novi nacin za injectanje servisa
-  constructor(private router:Router) {}
-  products =[
-    {
-      id:1,
-      imgUrl:'https://images.unsplash.com/photo-1667204651371-5d4a65b8b5a9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29jYSUyMGNvbGF8ZW58MHx8MHx8fDA%3D',
-      name:'Test',
-      price: 2.2,
-      quantity: 200
-    },
-    {
-      id:2,
-      imgUrl:'https://images.unsplash.com/photo-1667204651371-5d4a65b8b5a9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29jYSUyMGNvbGF8ZW58MHx8MHx8fDA%3D',
-      name:'Test2',
-      price: 4.2,
-      quantity: 200
-    },
-    {
-      id:3,
-      imgUrl:'https://images.unsplash.com/photo-1667204651371-5d4a65b8b5a9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29jYSUyMGNvbGF8ZW58MHx8MHx8fDA%3D',
-      name:'Test2',
-      price: 4.2,
-      quantity: 200
-    }
-  ]
-  
+  constructor(private router:Router, private productService:ProductService) {}
+  products : any[] = []  
+
+  ngOnInit(){
+   this.products = this.productService.getProducts();
+  }
 
   onClick(id:number) {
     this.router.navigate([`product-details/${id}`])

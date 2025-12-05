@@ -1,1 +1,5 @@
-<p>login works!</p>
+<input type="text" placeholder="username" [(ngModel)]="user.username">
+<input type="text" placeholder="full name" [(ngModel)]="user.fullname">
+<input type="text" placeholder="email" [(ngModel)]="user.email">
+
+<button class="btn btn-primary" (click)="login()">Login</button>

@@ -1,8 +1,31 @@
+<h1 class="text-center mt-5 mb-5">{{title}}</h1>
+<h1>Welcome {{username}}</h1>
 <div class="row">
-    <div *ngFor="let user of users" class="col-3">
-        <p>{{user.id}}</p>
-        <p>{{user.username}}</p>
-        <p>{{user.email}}</p>
-        <button class="btn btn-primary" (click)="onClickUser(user.id)">Details</button>
+    <div  *ngFor="let user of users" class="col-3 border">
+        <div [ngClass]="user.active?'bg-danger':'bg-success'">
+            <p>{{user.id}}</p>
+            <p>{{user.username}}</p>
+            <p>{{user.email}}</p>
+            <button class="btn btn-primary" (click)="onClickUser(user.id)">Details</button>
+        </div>
     </div>
+</div>
+<div class="container">
+    <h3>{{inputText}}</h3>
+    <input type="text" [(ngModel)] = 'inputText'>
+</div>
+
+<div class="container">
+    <h2>{{changableText}}</h2>
+    <button (click)="changeText('aslkjdfaslk')">Promjeni text</button>
+</div>
+
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let text of textList">text</li>
+    </ul>
+</div>
+<div class="container">
+    <h1 *ngIf="hideElement">Hello</h1>
+    <button (click)="showText()">Show Text</button>
 </div>

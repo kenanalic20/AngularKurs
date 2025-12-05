@@ -3,11 +3,12 @@ import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { NgForOf } from "@angular/common";
 import { ProductsComponent } from "./components/products/products.component";
 import { HomeComponent } from "./components/home/home.component";
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgForOf, ProductsComponent, HomeComponent, RouterLink],
+  imports: [RouterOutlet, NgForOf, ProductsComponent, HomeComponent, RouterLink, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

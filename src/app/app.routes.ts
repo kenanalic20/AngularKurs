@@ -25,18 +25,18 @@ export const routes: Routes = [
         path: 'user-details/:id',
         component: UserDetailsComponent
     },
-    // {
-    //     path: 'products',
-    //     component: ProductsComponent,
-    // },
-    // {
-    //     path:'login',
-    //     component: LoginComponent
-    // },
-    // {
-    //     path:'product-details/:id',
-    //     component: ProductDetailsComponent
-    // },
+    {
+        path: 'products',
+        component: ProductsComponent,
+    },
+    {
+        path:'login',
+        component: LoginComponent
+    },
+    {
+        path:'product-details/:id',
+        component: ProductDetailsComponent
+    },
     {
         path: '',
         redirectTo:'home',
