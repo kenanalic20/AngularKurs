@@ -1,12 +1,24 @@
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  http=inject(HttpClient);
+  apiUrl = 'https://dummyjson.com/products/'
+  //'https://dummyjson.com/products/category/
+  getProductsFromApi() {
+    return this.http.get(this.apiUrl);
+  }
+  getProductsFromApiById(id:number) {
+    return this.http.get(this.apiUrl+id);
 
+  }
+  getProductsByCategory(category:string) {
+    return this.http.get(this.apiUrl+'category/'+ category)
+  }
   getProducts() {
     return [
       {

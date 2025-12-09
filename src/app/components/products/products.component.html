@@ -1,5 +1,5 @@
     <div class="row">
-      <div class="col-lg-3 col-md-5 card" *ngFor="let product of products">
+      <!-- <div class="col-lg-3 col-md-5 card" *ngFor="let product of products">
         <img class="card-img-top" [src]="product.imgUrl" alt="">
         <div class="card-body">
           <div class="card-title">{{product.name}}</div>
@@ -8,6 +8,21 @@
           <button (click)="onClick(product.id)" class="btn btn-primary">Details</button>
         </div>
       </div>
-  
+    </div> -->
+    <select style="width: 10%;" name="" id="" [(ngModel)]="selectedCategory" (change)="selectCategory()">
+      <option *ngFor="let category of categoryList" [value]="category" >{{category}}</option>
+    </select>
+    <div class="row">
+      <h1>Products from HTTP</h1>
+      <div class="col-lg-3 col-md-5 card" *ngFor="let product of httpProducts">
+        <img class="card-img-top" [src]="product.images[0]" alt="">
+        <div class="card-body">
+          <div class="card-title">{{product.title}}</div>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">{{product.brand}}</p>
+          <button (click)="onClick(product.id)" class="btn btn-primary">Details</button>
+        </div>
+      </div>
     </div>
   
